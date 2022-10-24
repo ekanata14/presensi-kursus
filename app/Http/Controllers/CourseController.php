@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\User;
+use App\Models\Students;
 use App\Http\Requests\StoreCourseRequest;
 use App\Http\Requests\UpdateCourseRequest;
-
 class CourseController extends Controller
 {
     /**
@@ -15,7 +16,10 @@ class CourseController extends Controller
      */
     public function index()
     {
-        //
+        return view("dashboard.course.index",[
+            'students' => Students::all(),
+            'course' => Course::all()
+        ]);
     }
 
     /**
@@ -45,9 +49,12 @@ class CourseController extends Controller
      * @param  \App\Models\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function show(Course $course)
+    public function show(Course $course, Students $student)
     {
-        //
+        return view("dashboard.course.show",[
+            // 'student' => $course->student(),
+            'courses' => $student->id
+        ]);
     }
 
     /**

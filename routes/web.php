@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\StudentsController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,4 +20,8 @@ Route::get('/', function () {
     return view('dashboard.index');
 });
 
+// Dashboard Student Route
 Route::resource('/dashboard/students', StudentsController::class);
+
+// Dashboard Course Route
+Route::resource('/dashboard/course' , CourseController::class);
