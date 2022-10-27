@@ -19,7 +19,9 @@ use App\Http\Controllers\StudentsController;
 */
 
 Route::get('/', function () {
-    return view('dashboard.index');
+    return view('dashboard.index',[
+        'title' => 'Home'
+    ]);
 });
 
 // Dashboard Student Route

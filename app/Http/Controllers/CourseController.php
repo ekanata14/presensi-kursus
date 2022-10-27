@@ -18,7 +18,8 @@ class CourseController extends Controller
     {
         return view("dashboard.course.index",[
             'students' => Students::latest()->paginate(10),
-            'course' => Course::all()
+            'course' => Course::all(),
+            'title' => 'Course'
         ]);
     }
 
@@ -67,7 +68,8 @@ class CourseController extends Controller
     {
         return view("dashboard.course.show",[
             // 'student' => Students::all(),
-            'courses' => $course->where('id_students', $course->student->id)->paginate(8)
+            'courses' => $course->where('id_students', $course->student->id)->paginate(8),
+            'title' => 'Course'
         ]);
     }
 

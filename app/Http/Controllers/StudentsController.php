@@ -15,7 +15,8 @@ class StudentsController extends Controller
     public function index(Students $students)
     {
         return view('dashboard.students.index',[
-            'students' => $students->latest()->paginate(10)
+            'students' => $students->latest()->paginate(10),
+            'title' => 'Students'
         ]);
     }
 
