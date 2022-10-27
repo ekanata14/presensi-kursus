@@ -1,8 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\StudentsController;
+
 
 
 /*
@@ -25,3 +27,10 @@ Route::resource('/dashboard/students', StudentsController::class);
 
 // Dashboard Course Route
 Route::resource('/dashboard/course' , CourseController::class);
+
+// Auth Routes
+Route::controller(AuthController::class)->group(function(){
+    Route::get('/login', 'index');
+    Route::post('/login', 'authenticate');
+    Route::post('/logout', 'logout');
+});

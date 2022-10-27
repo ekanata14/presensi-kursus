@@ -27,9 +27,11 @@ class CourseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Students $student, Course $course)
     {
-        //
+        return view("dashboard.course.create",[
+            'students' =>  $student->all()
+        ]);
     }
 
     /**
@@ -40,7 +42,19 @@ class CourseController extends Controller
      */
     public function store(StoreCourseRequest $request)
     {
-        //
+        $validatedData = $request->validate([
+            'date' => 'required',
+            'lessons' => 'required',
+            'student' => 'required'
+        ]);
+
+        $validatedData['id_students'] = $validatedData['student'];
+
+        Course::create($validatedData);
+
+        return redirect('/dashboard/course/' . $validatedData['student'])->with('success', 'Course successfully created');
+
+        // $validatedData['id_'] = 
     }
 
     /**
@@ -52,8 +66,8 @@ class CourseController extends Controller
     public function show(Course $course)
     {
         return view("dashboard.course.show",[
-            // 'student' => $course->student(),
-            'courses' => $course->where('id_students', $course->student->id)->get()
+            // 'student' => Students::all(),
+            'courses' => $course->where('id_students', $course->student->id)->paginate(8)
         ]);
     }
 
