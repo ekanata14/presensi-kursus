@@ -3,6 +3,7 @@
 @section('content')
     <div class="row">
         <div class="col-10">
+            <a href="/dashboard/students/create" class="btn btn-primary my-3">Create New Student</a>
             <h1>Students Data</h1>
             <table class="table table-striped">
                 <thead>
@@ -37,6 +38,7 @@
                     @endforeach
                 </tbody>
             </table>
+            {{ $students->links() }}
         </div>
     </div>
 @endsection

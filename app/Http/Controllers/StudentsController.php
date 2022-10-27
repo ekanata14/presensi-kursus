@@ -12,10 +12,10 @@ class StudentsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Students $students)
     {
         return view('dashboard.students.index',[
-            'students' => Students::all()
+            'students' => $students->latest()->paginate(10)
         ]);
     }
 
@@ -26,7 +26,7 @@ class StudentsController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.students.create');
     }
 
     /**
@@ -37,7 +37,18 @@ class StudentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:students',
+            'grade' => 'required',
+            'school' => 'required',
+            'origin' => 'required',
+            'status' => 'required'
+        ]);
+
+        Students::create($validatedData);
+
+        return redirect('dashboard/students')->with('success', 'Student created successfully');
     }
 
     /**
