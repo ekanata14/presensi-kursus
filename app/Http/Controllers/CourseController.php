@@ -17,7 +17,7 @@ class CourseController extends Controller
     public function index()
     {
         return view("dashboard.course.index",[
-            'students' => Students::all(),
+            'students' => Students::latest()->paginate(10),
             'course' => Course::all()
         ]);
     }
@@ -25,7 +25,7 @@ class CourseController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response        
      */
     public function create(Students $student, Course $course)
     {
