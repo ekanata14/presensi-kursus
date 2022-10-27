@@ -14,7 +14,7 @@ class CourseFactory extends Factory
     public function definition()
     {
         return [
-            'id_students' => 1,
+            'id_students' => mt_rand(1,5),
             'date' => $this->faker->dateTime(),
             'lessons' => "English"
         ];
