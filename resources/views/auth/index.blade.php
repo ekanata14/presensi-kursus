@@ -63,8 +63,14 @@
   <body class="text-center">
     
 <main class="form-signin w-100 m-auto">
-  <form action="/login" method="POST">
+  <form action="/login" method="post">
     <h1 class="h3 mb-3 fw-normal">Login</h1>
+    @if(session()->has('loginError'))
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      {{ session('loginError') }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    @endif
     @csrf
     <div class="form-floating">
       <input type="email" class="form-control @error('email') is-invalid @enderror" id="floatingInput" placeholder="Email" name="email">

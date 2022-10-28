@@ -22,7 +22,7 @@ Route::get('/', function () {
     return view('dashboard.index',[
         'title' => 'Home'
     ]);
-});
+})->middleware('auth');
 
 // Dashboard Student Route
 Route::resource('/dashboard/students', StudentsController::class);
@@ -32,7 +32,8 @@ Route::resource('/dashboard/course' , CourseController::class);
 
 // Auth Routes
 Route::controller(AuthController::class)->group(function(){
-    Route::get('/login', 'index');
+    Route::get('/login', 'index')->name('login');
     Route::post('/login', 'authenticate');
     Route::post('/logout', 'logout');
 });
+ 
