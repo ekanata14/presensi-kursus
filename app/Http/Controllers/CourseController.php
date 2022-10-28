@@ -31,7 +31,8 @@ class CourseController extends Controller
     public function create(Students $student, Course $course)
     {
         return view("dashboard.course.create",[
-            'students' =>  $student->all()
+            'students' =>  $student->all(),
+            'title' => 'Course'
         ]);
     }
 
@@ -69,6 +70,7 @@ class CourseController extends Controller
         return view("dashboard.course.show",[
             // 'student' => Students::all(),
             'courses' => $course->where('id_students', $course->student->id)->paginate(8),
+            'students' => Students::all(),
             'title' => 'Course'
         ]);
     }
@@ -81,7 +83,11 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
-        //
+        return view('dashboard.course.edit',[
+            'course' => $course,
+            'students' => Students::all(),
+            'title' => 'Course'
+        ]);
     }
 
     /**
@@ -93,7 +99,17 @@ class CourseController extends Controller
      */
     public function update(UpdateCourseRequest $request, Course $course)
     {
-        //
+        $validatedData = $request->validate([
+            'date' => 'required',
+            'lessons' => 'required',
+            'id_students' => 'required'
+        ]);
+
+        $validatedData['id_students'] = $validatedData['id_students'];
+
+        Course::where('id', $course->id)->update($validatedData);
+
+        return redirect('dashboard/course/' . $validatedData['id_students'])->with('success', 'Course successfully updated');
     }
 
     /**
