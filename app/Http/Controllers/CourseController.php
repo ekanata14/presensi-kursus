@@ -32,6 +32,7 @@ class CourseController extends Controller
     {
         return view("dashboard.course.create",[
             'students' =>  $student->all(),
+            'course' => $course,
             'title' => 'Course'
         ]);
     }

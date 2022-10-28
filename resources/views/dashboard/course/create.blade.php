@@ -27,7 +27,11 @@
                 <label for="student" class="form-label">Student</label>
                 <select name="student" id="student" class="form-select">
                   @foreach ($students as $student)
+                    @if($course->id_students == $student->id)
+                      <option value="{{ $student->id }}" selected>{{ $student->name }}</option>
+                    @else
                       <option value="{{ $student->id }}">{{ $student->name }}</option>
+                    @endif
                   @endforeach
                 </select>
                 @error('student')
