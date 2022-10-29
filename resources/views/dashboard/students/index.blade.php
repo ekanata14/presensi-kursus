@@ -44,7 +44,7 @@
                     @endforeach
                 </tbody>
             </table>
-            {{ $students->links() }}
+            {{-- {{ $students->links() }} --}}
         </div>
     </div>
 @endsection

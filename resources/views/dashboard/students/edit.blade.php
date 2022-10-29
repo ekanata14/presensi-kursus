@@ -10,9 +10,8 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">My Students</h1>
 </div>
-{{ $student }}
     <div class="col-lg-5 mb-5">
-        <form method="post" action="/dashboard/students">
+        <form method="post" action="/dashboard/students/{{ $student->id }}">
             @method('put')
           @csrf
             <div class="mb-3">
@@ -61,7 +60,7 @@
                 @enderror
               </div>
               <input type="hidden" name="status" value="1">
-            <button type="submit" class="btn btn-primary">Create</button>
+            <button type="submit" class="btn btn-primary">Edit</button>
           </form>
     </div>
 

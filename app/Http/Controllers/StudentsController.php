@@ -15,7 +15,7 @@ class StudentsController extends Controller
     public function index(Students $students)
     {
         return view('dashboard.students.index',[
-            'students' => $students->latest()->paginate(10),
+            'students' => Students::all(),
             'title' => 'Students'
         ]);
     }
@@ -71,11 +71,11 @@ class StudentsController extends Controller
      * @param  \App\Models\Students  $Students
      * @return \Illuminate\Http\Response
      */
-    public function edit(Students $students)
+    public function edit(Students $student)
     {
         return view('dashboard.students.edit',[
             'title' => 'Students',
-            'student' => $students
+            'student' => $student
         ]);
     }
 
@@ -86,9 +86,20 @@ class StudentsController extends Controller
      * @param  \App\Models\Students  $Students
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Students $students)
+    public function update(Request $request, Students $student)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'school' => 'required',
+            'grade' => 'required',
+            'origin' => 'required'
+        ]);
+
+        Students::where('id', $student->id)->update($validatedData);
+        
+        return redirect('/dashboard/students')->with('success', 'Student successfully edited');
+        
     }
 
     /**
