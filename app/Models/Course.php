@@ -19,7 +19,7 @@ class Course extends Model
     }
 
     public function scopeFilter($query, Array $filters){
-        return $query->when($filters['search'] ?? false, function($query, $search){
+        $query->when($filters['search'] ?? false, function($query, $search){
             return $query->where('lessons', 'like', '%' . $search . '%')->orWhere('date' , 'like' , '%' . $search .'%');
         });
     }

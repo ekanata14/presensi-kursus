@@ -71,13 +71,13 @@ class CourseController extends Controller
      * @param  \App\Models\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function show(Course $course, Students $student, Request $request)
+    public function show(Course $course, Students $student)
     {
-        $key = $request->student;
+
         return view("dashboard.course.show",[
             // 'student' => Students::all(),
             'courses' => $course->where('id_students', $course->student->id)->paginate(8),
-            'student' => $student->where('id', $key)->get(),
+            'student' => $student->where('id', $course->student->id)->get(),
             'title' => 'Course'
         ]);
     }
