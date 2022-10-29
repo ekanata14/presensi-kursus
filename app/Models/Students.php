@@ -14,4 +14,10 @@ class Students extends Model
     public function course(){
         return $this->hasMany(Course::class);
     }
+
+    public function scopeFilter($query, Array $filters){
+        $query->when($filters['search'] ?? false, function($query, $search){
+            return $query->where('name', 'like', '%' . $search . '%');
+        });
+    }
 }

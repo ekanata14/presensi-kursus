@@ -3,7 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\StudentsController;
+
 
 
 
@@ -29,6 +31,9 @@ Route::resource('/dashboard/students', StudentsController::class);
 
 // Dashboard Course Route
 Route::resource('/dashboard/course' , CourseController::class);
+
+// Dashboard Search Route
+Route::get('/dashboard/search', [SearchController::class, 'index']);
 
 // Auth Routes
 Route::controller(AuthController::class)->group(function(){
