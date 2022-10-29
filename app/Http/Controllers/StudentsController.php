@@ -27,7 +27,9 @@ class StudentsController extends Controller
      */
     public function create()
     {
-        return view('dashboard.students.create');
+        return view('dashboard.students.create',[
+            'title' => 'Students'
+        ]);
     }
 
     /**
@@ -71,7 +73,10 @@ class StudentsController extends Controller
      */
     public function edit(Students $students)
     {
-        //
+        return view('dashboard.students.edit',[
+            'title' => 'Students',
+            'student' => $students
+        ]);
     }
 
     /**
@@ -92,8 +97,9 @@ class StudentsController extends Controller
      * @param  \App\Models\Students  $students
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Students $Student)
+    public function destroy(Students $student)
     {
-        //
+        Students::destroy($student->id);
+        return redirect('/dashboard/students/')->with('success', 'Students Successfully deleted');
     }
 }

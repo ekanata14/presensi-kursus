@@ -2,6 +2,12 @@
 
 @section('content')
     <div class="row">
+        @if(session()->has('success'))
+            <div class="alert alert-success alert-dismissible fade show col-4" role="alert">
+                {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
         <div class="col-10">
             <a href="/dashboard/students/create" class="btn btn-primary my-3">Create New Student</a>
             <h1>Students Data</h1>

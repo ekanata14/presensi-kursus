@@ -31,7 +31,7 @@ class CourseController extends Controller
     public function create(Students $student, Course $course)
     {
         return view("dashboard.course.create",[
-            'students' =>  $student->all(),
+            'students' =>  Students::where('id', $course->id_students),
             'course' => $course,
             'title' => 'Course'
         ]);
