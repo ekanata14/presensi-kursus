@@ -15,7 +15,7 @@ class StudentsController extends Controller
     public function index(Students $students)
     {
         return view('dashboard.students.index',[
-            'students' => Students::all(),
+            'students' => Students::paginate(10),
             'title' => 'Students'
         ]);
     }
@@ -42,7 +42,7 @@ class StudentsController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required',
-            'email' => 'required|email|unique:students',
+            'email' => 'email|unique:students|nullable',
             'grade' => 'required',
             'school' => 'required',
             'origin' => 'required',
@@ -90,7 +90,7 @@ class StudentsController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'email|unique:students|nullable',
             'school' => 'required',
             'grade' => 'required',
             'origin' => 'required'
