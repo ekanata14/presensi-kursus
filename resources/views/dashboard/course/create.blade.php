@@ -22,24 +22,8 @@
                     {{ $message }}
                   </div>
                 @enderror
-              </div>
-              <div class="mb-3 d-flex flex-column">
-                <label for="student" class="form-label">Student</label>
-                <select name="student" id="student" class="form-select">
-                  @foreach ($students as $student)
-                    @if($course->id_students == $student->id)
-                      <option value="{{ $student->id }}" selected>{{ $student->name }}</option>
-                    @else
-                      <option value="{{ $student->id }}">{{ $student->name }}</option>
-                    @endif
-                  @endforeach
-                </select>
-                @error('student')
-                  <div class="invalid-feedback">
-                    {{ $message }}
-                  </div>
-                @enderror
-              </div>
+            </div>
+            <input type="hidden" name="student" value="{{ $students[0]['id'] }}">
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
     </div>

@@ -32,10 +32,11 @@ class CourseController extends Controller
      *
      * @return \Illuminate\Http\Response        
      */
-    public function create(Students $student, Course $course)
+    public function create(Students $student, Course $course, Request $request)
     {
+        $key = $request->student;
         return view("dashboard.course.create",[
-            'students' =>  Students::where('id', $course->id_students),
+            'students' =>  $student->where('id', $key)->get(),
             'course' => $course,
             'title' => 'Course'
         ]);
@@ -59,7 +60,7 @@ class CourseController extends Controller
 
         Course::create($validatedData);
 
-        return redirect('/dashboard/course/' . $validatedData['student'])->with('success', 'Course successfully created');
+        return redirect('/dashboard/course/' . $validatedData['student'] . '?student=' . $validatedData['student'])->with('success', 'Course successfully created');
 
         // $validatedData['id_'] = 
     }

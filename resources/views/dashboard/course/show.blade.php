@@ -11,7 +11,7 @@
         @endif
         <h4>{{ $student[0]['name'] }}</h4>
         {{-- <h4>{{ $student[] }}</h4> --}}
-        <a href="/dashboard/course/create" class="btn btn-primary my-3">Create New Course</a>
+        <a href="/dashboard/course/create?student={{ $student[0]['id'] }}" class="btn btn-primary my-3">Create New Course</a>
         <table class="table table-striped">
             <thead>
                 <th>No</th>
