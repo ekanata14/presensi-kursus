@@ -40,7 +40,6 @@
                 </table>
             </div>
             @endif
-
             @if($courses->count())
             <div class="col-6">
                 <table class="table table-striped">
@@ -49,6 +48,7 @@
                         <th>Date</th>
                         <th>Lessons</th>
                         <th>Student</th>
+                        <th>Action</th>
                     </thead>
                     <tbody>
                         @foreach($courses as $course)
@@ -56,8 +56,9 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $course->date }}</td>
                             <td>{{ $course->lessons }}</td>
-                            {{-- <td>{{ $course->student->name }}</td> --}}
+
                             <td>
+                                <a href="/dashboard/course/{{ $course->id_students }}" class="btn btn-info"> Detail</a>
                                 <a href="/dashboard/course/{{ $course->id }}/edit" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i> Edit </a>
                                 <form action="/dashboard/course/{{ $course->id }}" method="post" class="d-inline">
                                     @method('delete')

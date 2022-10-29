@@ -12,7 +12,7 @@ class Students extends Model
     protected $guarded = ['id'];
 
     public function course(){
-        return $this->hasMany(Course::class);
+        return $this->hasMany(Course::class, 'id');
     }
 
     public function scopeFilter($query, Array $filters){

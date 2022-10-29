@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Students;
 
 class Course extends Model
 {
@@ -15,8 +14,8 @@ class Course extends Model
         'date' => 'datetime:d-m-Y'
     ];
 
-    public function student(Students $students){
-        return $this->belongsTo($students, 'id');
+    public function student(){
+        return $this->belongsTo(Students::class, 'id');
     }
 
     public function scopeFilter($query, Array $filters){

@@ -7,6 +7,10 @@ use App\Models\User;
 use App\Models\Students;
 use App\Http\Requests\StoreCourseRequest;
 use App\Http\Requests\UpdateCourseRequest;
+use Illuminate\Http\Request;
+
+// use Illuminate\Support\Facades\Input
+
 class CourseController extends Controller
 {
     /**
@@ -66,12 +70,13 @@ class CourseController extends Controller
      * @param  \App\Models\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function show(Course $course)
+    public function show(Course $course, Students $student, Request $request)
     {
+        $key = $request->student;
         return view("dashboard.course.show",[
             // 'student' => Students::all(),
             'courses' => $course->where('id_students', $course->student->id)->paginate(8),
-            'students' => Students::all(),
+            'student' => $student->where('id', $key)->get(),
             'title' => 'Course'
         ]);
     }
