@@ -3,19 +3,19 @@
       <ul class="nav flex-column">
         <li class="nav-item">
           <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" aria-current="page" href="/">
-            <span data-feather="home" class="align-text-bottom"></span>
+            <i class="fa fas fa-home"></i>
             Dashboard
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link {{ Request::is('dashboard/students*') ? 'active' : '' }}" href="/dashboard/students">
-            <span data-feather="file" class="align-text-bottom"></span>
+            <i class="fa fas fa-graduation-cap"></i>
             Students
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link {{ Request::is('dashboard/course*') ? 'active' : '' }}" href="/dashboard/course">
-            <span data-feather="shopping-cart" class="align-text-bottom"></span>
+            <i class="fa fas fa-book"></i>
             Course
           </a>
         </li>
