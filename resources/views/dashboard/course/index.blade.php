@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="row">
-        <div class="col-6">
+        <div class="col-4">
             <h1>Students Data</h1>
             <table class="table table-striped">
                 <thead>
@@ -16,9 +16,9 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $student->name }}</td>
                         <td>
-                            <a href="/dashboard/course/{{ $student->id }}" class="btn btn-info"><i class="fa-solid fa-circle-info"></i> Detail</a>
+                            <a href="/dashboard/course/{{ $student->id }}" class="btn btn-info"><i class="fa fa-solid fa-circle-info"></i></a>
                         </td>
-                    </tr>
+                      </tr>
                     @endforeach
                 </tbody>
             </table>

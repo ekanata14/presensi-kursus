@@ -33,11 +33,11 @@
                         <td>{{ $student->origin }}</td>
                         <td>{{ $student->status }}</td>
                         <td>
-                            <a href="/dashboard/students/{{ $student->id }}/edit" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+                            <a href="/dashboard/students/{{ $student->id }}/edit" class="btn btn-warning"><i class="fa fa-solid fa-pen-to-square"></i></a>
                             <form action="/dashboard/students/{{ $student->id }}" method="post" class="d-inline">
                                 @method('delete')
                                 @csrf
-                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')"><i class="fa-solid fa-trash"></i> Delete</button>
+                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')"><i class="fa fa-solid fa-trash"></i></button>
                             </form>
                         </td>
                     </tr>

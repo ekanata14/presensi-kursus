@@ -61,7 +61,7 @@
     <!-- Custom styles for this template -->
     <link href="/css/dashboard.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.2/css/fontawesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.2/css/fontawesome.min.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/88f7f8719e.js" crossorigin="anonymous"></script>
   </head>
   <body>
@@ -77,7 +77,7 @@
     <div class="nav-item text-nowrap">
       <form action="/logout" method="post">
         @csrf
-        <button type="submit" class="btn btn-dark">Logout</button>
+        <button type="submit" class="btn btn-dark">Logout <i class="fa fa-solid fa-right-from-bracket ms-1"></i></button>
       </form>
     </div>
   </div>

@@ -25,11 +25,11 @@
                     <td>{{ $course->date }}</td>
                     <td>{{ $course->lessons }}</td>
                     <td>
-                        <a href="/dashboard/course/{{ $course->id }}/edit" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i> Edit </a>
+                        <a href="/dashboard/course/{{ $course->id }}/edit" class="btn btn-warning"><i class="fa fas fa-pen-to-square"></i></a>
                         <form action="/dashboard/course/{{ $course->id }}" method="post" class="d-inline">
                             @method('delete')
                             @csrf
-                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')"><i class="fa-solid fa-trash"></i> Delete</button>
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')"><i class="fa fa-solid fa-trash"></i></button>
                         </form>
                     </td>
                 </tr>
