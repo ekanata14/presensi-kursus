@@ -7,7 +7,7 @@
             <div class="mb-3">
                 {{-- <input type="hidden" value="{{ $course->user->id }}"> --}}
               <label for="date" class="form-label">Date</label>
-              <input type="datetime-local" class="form-control @error('date') is-invalid @enderror" id="date" name="date" required autofocus value="{{ old('date') }}">
+              <input type="date" class="form-control @error('date') is-invalid @enderror" id="date" name="date" required autofocus value="{{ old('date') }}">
               @error('date')
                 <div class="invalid-feedback">
                   {{ $message }}

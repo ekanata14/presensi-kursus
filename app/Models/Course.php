@@ -10,9 +10,6 @@ class Course extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
-    protected $casts = [
-        'date' => 'datetime:d-m-Y'
-    ];
 
     public function student(){
         return $this->belongsTo(Students::class, 'id');
