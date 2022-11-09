@@ -1,6 +1,7 @@
 @extends('dashboard.templates.main')
 
 @section('content')
+    {{-- {{ dd($students, $courses) }} --}}
     <div class="row">
         @if($students->count() == 0 && $courses->count() == 0)
             <h3>No Result Found</h3>
@@ -28,11 +29,11 @@
                             <td>{{ $student->grade }}</td>
                             <td>{{ $student->origin }}</td>
                             <td>
-                                <a href="/dashboard/students/{{ $student->id }}/edit" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+                                <a href="/dashboard/students/{{ $student->id }}/edit" class="btn btn-warning"><i class="fa fa-solid fa-pen-to-square"></i></a>
                                 <form action="/dashboard/students/{{ $student->id }}" method="post" class="d-inline">
                                     @method('delete')
                                     @csrf
-                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')"><i class="fa-solid fa-trash"></i> Delete</button>
+                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')"><i class="fa fa-solid fa-trash"></i></button>
                                 </form>
                             </td>
                         </tr>
@@ -59,14 +60,14 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $course->date }}</td>
                             <td>{{ $course->lessons }}</td>
-                            <td>{{ $course->student->name }}</td>
+                            <td>{{ $course->id_students }}</td>
                             <td>
-                                <a href="/dashboard/course/{{ $course->id_students }}?student={{ $course->id_students }}" class="btn btn-info"> Detail</a>
-                                <a href="/dashboard/course/{{ $course->id }}/edit" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i> Edit </a>
+                                <a href="/dashboard/students/{{ $course->student }}" class="btn btn-info"> Detail</a>
+                                <a href="/dashboard/course/{{ $course->id }}/edit" class="btn btn-warning"><i class="fa fa-solid fa-pen-to-square"></i></a>
                                 <form action="/dashboard/course/{{ $course->id }}" method="post" class="d-inline">
                                     @method('delete')
                                     @csrf
-                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')"><i class="fa-solid fa-trash"></i> Delete</button>
+                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')"><i class="fa fa-solid fa-trash"></i></button>
                                 </form>
                             </td>
                         </tr>

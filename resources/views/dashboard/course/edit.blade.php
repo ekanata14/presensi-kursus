@@ -3,10 +3,9 @@
 @section('content')
     <div class="col-lg-5 mb-5">
         <form action="/dashboard/course/{{ $course->id }}" method="post">
-            {{-- @method('put') --}}
+            @method('put')
             @csrf
             <div class="mb-3">
-                <input type="hidden" name="_method" value="PUT">
                 <input type="hidden" value="{{ $course->id }}" name="id">
               <label for="date" class="form-label">Date</label>
               <input type="date" class="form-control @error('date') is-invalid @enderror" id="date" name="date" required autofocus value="{{ old('date', $course->date) }}">

@@ -21,8 +21,8 @@ class Course extends Model
         });
     }
 
-    public function getRouteKeyName()   
-    {
-        return 'id_students';
-    }
+    // public function getRouteKeyName()   
+    // {
+    //     return 'id_students';
+    // }
 }

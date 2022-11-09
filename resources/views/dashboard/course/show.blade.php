@@ -21,21 +21,25 @@
                     <th>Lesson</th>
                 </thead>
                 <tbody>
-                    @foreach ($courses as $course)
-                    <tr>
-                        <td>{{ $loop->iteration }}</td>
-                        <td>{{ $course->date }}</td>
-                        <td>{{ $course->lessons }}</td>
-                        <td>
-                            <a href="/dashboard/course/{{ $course->id_students }}/edit?id={{ $course->id }}" class="btn btn-warning"><i class="fa fas fa-pen-to-square"></i></a>
-                            <form action="/dashboard/course/{{ $course->id_students }}?id={{ $course->id }}" method="post" class="d-inline">
-                                @method('delete')
-                                @csrf
-                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')"><i class="fa fa-solid fa-trash"></i></button>
-                            </form>
-                        </td>
-                    </tr>
-                    @endforeach
+                    @if($courses->count() == 0)
+                        <h3>No Courses Found, Create One</h3>
+                    @else
+                        @foreach ($courses as $course)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $course->date }}</td>
+                            <td>{{ $course->lessons }}</td>
+                            <td>
+                                <a href="/dashboard/course/{{ $course->id }}/edit" class="btn btn-warning"><i class="fa fas fa-pen-to-square"></i></a>
+                                <form action="/dashboard/course/{{ $course->id }}" method="post" class="d-inline">
+                                    @method('delete')
+                                    @csrf
+                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')"><i class="fa fa-solid fa-trash"></i></button>
+                                </form>
+                            </td>
+                        </tr>
+                        @endforeach
+                    @endif
                 </tbody>
             </table>
         @endif

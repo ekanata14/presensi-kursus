@@ -68,7 +68,7 @@ class CourseController extends Controller
 
         Course::create($validatedData);
 
-        return redirect('/dashboard/course/' . $validatedData['student'] . '?student=' . $validatedData['student'])->with('success', 'Course successfully created');
+        return redirect('/dashboard/students/' . $request->student)->with('success', 'Course successfully created');
 
         // $validatedData['id_'] = 
     }
@@ -97,8 +97,9 @@ class CourseController extends Controller
      */
     public function edit(Course $course, Request $request)
     {
+        // dd($course, $request);
         return view('dashboard.course.edit',[
-            'course' => $course->where('id', $request->id)->first(),
+            'course' => $course->where('id', $course->id)->first(),
             'students' => Students::all(),
             'title' => 'Course'
         ]);
@@ -126,7 +127,7 @@ class CourseController extends Controller
 
         // return redirect('dashboard/students/' . $course->student->id)->with('success', 'Course successfully updated');
         // return back();
-        return redirect('dashboard/course/' . $request->id_students)->with('success', 'Course Successfully Deleted');
+        return redirect('dashboard/students/' . $request->id_students)->with('success', 'Course Successfully Deleted');
 
     }
 
@@ -138,7 +139,8 @@ class CourseController extends Controller
      */
     public function destroy(Course $course, Students $student, Request $request)
     {
-        Course::destroy($request->id);
-        return redirect('dashboard/course/' . $course->id_students)->with('success', 'Course Successfully Deleted');
+        // dd($course, $student, $request);
+        Course::destroy($course->id);
+        return redirect('dashboard/students/' . $course->id_students)->with('success', 'Course Successfully Deleted');
     }
 }

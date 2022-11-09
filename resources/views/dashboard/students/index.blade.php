@@ -41,7 +41,6 @@
                                 @csrf
                                 <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')"><i class="fa fa-solid fa-trash"></i></button>
                             </form>
-                            <a href="/dashboard/students/{{ $student->id }}" class="btn btn-primary">Course</a>
                         </td>
                     </tr>
                     @endforeach
