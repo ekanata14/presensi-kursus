@@ -3,12 +3,13 @@
 @section('content')
     <div class="col-lg-5 mb-5">
         <form action="/dashboard/course/{{ $course->id }}" method="post">
-            @method('patch')
+            {{-- @method('put') --}}
             @csrf
             <div class="mb-3">
-                {{-- <input type="hidden" value="{{ $course->user->id }}"> --}}
+                <input type="hidden" name="_method" value="PUT">
+                <input type="hidden" value="{{ $course->id }}" name="id">
               <label for="date" class="form-label">Date</label>
-              <input type="datetime-local" class="form-control @error('date') is-invalid @enderror" id="date" name="date" required autofocus value="{{ old('date', $course->date) }}">
+              <input type="date" class="form-control @error('date') is-invalid @enderror" id="date" name="date" required autofocus value="{{ old('date', $course->date) }}">
               @error('date')
                 <div class="invalid-feedback">
                   {{ $message }}

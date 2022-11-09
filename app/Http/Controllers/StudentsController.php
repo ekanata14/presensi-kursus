@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Students;
+use App\Models\Course;
 use Illuminate\Http\Request;
 
 class StudentsController extends Controller
@@ -60,9 +61,14 @@ class StudentsController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(Students $students)
+    public function show(Students $student, Course $course)
     {
-        //
+        return view("dashboard.course.show",[
+            // 'student' => Students::all(),
+            'courses' => $course->where('id_students', $student->id)->paginate(8),
+            'student' => $student->where('id', $student->id)->get(),
+            'title' => 'Course'
+        ]);
     }
 
     /**

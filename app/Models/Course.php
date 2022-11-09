@@ -20,4 +20,9 @@ class Course extends Model
             return $query->where('lessons', 'like', '%' . $search . '%')->orWhere('date' , 'like' , '%' . $search .'%');
         });
     }
+
+    public function getRouteKeyName()   
+    {
+        return 'id_students';
+    }
 }

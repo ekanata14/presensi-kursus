@@ -16,7 +16,7 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $student->name }}</td>
                         <td>
-                            <a href="/dashboard/course/{{ $student->id }}" class="btn btn-info"><i class="fa fa-solid fa-circle-info"></i></a>
+                            <a href="/dashboard/students/{{ $student->id }}" class="btn btn-info"><i class="fa fa-solid fa-circle-info"></i></a>
                         </td>
                       </tr>
                     @endforeach

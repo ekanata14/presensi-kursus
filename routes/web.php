@@ -1,10 +1,12 @@
 <?php
 
+use App\Models\Students;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\StudentsController;
+
 
 
 
@@ -28,8 +30,9 @@ Route::get('/', function () {
 
 // Dashboard Student Route
 Route::resource('/dashboard/students', StudentsController::class);
-
 // Dashboard Course Route
+Route::get('/dashboard/course/{course:id_students}', [CourseController::class, 'show']);
+// Route::get('/dashboard/course/{course:id}/edit', [CourseController::class], 'edit');
 Route::resource('/dashboard/course' , CourseController::class);
 
 // Dashboard Search Route

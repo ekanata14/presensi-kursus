@@ -15,7 +15,7 @@ class CourseFactory extends Factory
     {
         return [
             'id_students' => mt_rand(1,5),
-            'date' => $this->faker->dateTime(),
+            'date' => $this->faker->date(),
             'lessons' => "English"
         ];
     }

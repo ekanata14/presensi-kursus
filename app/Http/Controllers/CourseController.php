@@ -27,6 +27,13 @@ class CourseController extends Controller
         ]);
     }
 
+    public function studentsCourse(Students $students){
+        return view('dashboard.course.index',[
+            'title' => 'Students Course',
+            'students' => $students->paginate(10)
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -35,6 +42,7 @@ class CourseController extends Controller
     public function create(Students $student, Course $course, Request $request)
     {
         $key = $request->student;
+        
         return view("dashboard.course.create",[
             'students' =>  $student->where('id', $key)->get(),
             'course' => $course,
@@ -73,11 +81,10 @@ class CourseController extends Controller
      */
     public function show(Course $course, Students $student)
     {
-
         return view("dashboard.course.show",[
             // 'student' => Students::all(),
-            'courses' => $course->where('id_students', $course->student->id)->paginate(8),
-            'student' => $student->where('id', $course->student->id)->get(),
+            'courses' => $course->where('id_students', $course->id_students)->paginate(8),
+            'student' => $student->where('id', $course->id_students)->get(),
             'title' => 'Course'
         ]);
     }
@@ -88,10 +95,10 @@ class CourseController extends Controller
      * @param  \App\Models\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function edit(Course $course)
+    public function edit(Course $course, Request $request)
     {
         return view('dashboard.course.edit',[
-            'course' => $course,
+            'course' => $course->where('id', $request->id)->first(),
             'students' => Students::all(),
             'title' => 'Course'
         ]);
@@ -107,16 +114,20 @@ class CourseController extends Controller
     public function update(UpdateCourseRequest $request, Course $course)
     {
         $validatedData = $request->validate([
+            'id' => 'required',
             'date' => 'required',
             'lessons' => 'required',
             'id_students' => 'required'
         ]);
 
-        $validatedData['id_students'] = $validatedData['id_students'];
+        // $validatedData['id_students'] = $validatedData['id_students'];
 
         Course::where('id', $course->id)->update($validatedData);
 
-        return redirect('dashboard/course/' . $validatedData['id_students'])->with('success', 'Course successfully updated');
+        // return redirect('dashboard/students/' . $course->student->id)->with('success', 'Course successfully updated');
+        // return back();
+        return redirect('dashboard/course/' . $request->id_students)->with('success', 'Course Successfully Deleted');
+
     }
 
     /**
@@ -125,9 +136,9 @@ class CourseController extends Controller
      * @param  \App\Models\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Course $course, Students $student)
+    public function destroy(Course $course, Students $student, Request $request)
     {
-        Course::destroy($course->id);
+        Course::destroy($request->id);
         return redirect('dashboard/course/' . $course->id_students)->with('success', 'Course Successfully Deleted');
     }
 }

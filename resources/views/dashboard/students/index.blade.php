@@ -15,6 +15,7 @@
                 <thead>
                     <th>No</th>
                     <th>Name</th>
+                    <th>Username</th>
                     <th>Email</th>
                     <th>Grade</th>
                     <th>School</th>
@@ -27,6 +28,7 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $student->name }}</td>
+                        <td>{{ $student->username }}</td>
                         <td>{{ $student->email }}</td>
                         <td>{{ $student->grade }}</td>
                         <td>{{ $student->school }}</td>
@@ -39,6 +41,7 @@
                                 @csrf
                                 <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')"><i class="fa fa-solid fa-trash"></i></button>
                             </form>
+                            <a href="/dashboard/students/{{ $student->id }}" class="btn btn-primary">Course</a>
                         </td>
                     </tr>
                     @endforeach
