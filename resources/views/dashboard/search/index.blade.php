@@ -51,7 +51,7 @@
                         <th>No</th>
                         <th>Date</th>
                         <th>Lessons</th>
-                        <th>Student</th>
+                        <th>Student Id</th>
                         <th>Action</th>
                     </thead>
                     <tbody>
