@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
             'remember_token' => Str::random(10),
         ]);
 
-        \App\Models\Students::factory(15)->create();
-        \App\Models\Course::factory(50)->create();
+        // \App\Models\Students::factory(15)->create();
+        // \App\Models\Course::factory(50)->create();
     }
 }
