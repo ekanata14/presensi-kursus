@@ -1,7 +1,7 @@
 @extends('dashboard.templates.main')
 
 @section('content')
-    <div class="col-6">
+    <div class="col-12">
         @if(session()->has('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 {{ session('success') }}

@@ -65,7 +65,7 @@ class StudentsController extends Controller
     {
         return view("dashboard.course.show",[
             // 'student' => Students::all(),
-            'courses' => $course->latest()->where('id_students', $student->id)->paginate(8),
+            'courses' => $course->orderBy('date', 'ASC')->where('id_students', $student->id)->paginate(8),
             'student' => $student->where('id', $student->id)->get(),
             'title' => 'Course'
         ]);
